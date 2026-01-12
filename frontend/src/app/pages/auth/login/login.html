@@ -4,23 +4,38 @@
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
 
-    <mat-card-content>
-      <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
         <mat-form-field appearance="outline" style="width: 100%; margin-top: 10px">
           <mat-label>E-mail</mat-label>
-          <input matInput placeholder="exemplo@email.com" />
+          <input matInput formControlName="email" placeholder="exemplo@email.com" />
+          <mat-error>Digite um e-mail válido</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" style="width: 100%">
           <mat-label>Senha</mat-label>
-          <input matInput type="password" />
+          <input matInput type="password" formControlName="password" />
+          <mat-error>A senha é obrigatória</mat-error>
         </mat-form-field>
-      </form>
-    </mat-card-content>
+      </mat-card-content>
 
-    <mat-card-actions align="end">
-      <button mat-button routerLink="/cadastro">Criar conta</button>
-      <button mat-flat-button color="primary">Entrar</button>
-    </mat-card-actions>
+      <mat-card-actions align="end">
+        <button mat-flat-button color="primary" type="submit" [disabled]="loginForm.invalid">
+          Entrar
+        </button>
+      </mat-card-actions>
+    </form>
+
+    <mat-card-footer style="padding: 20px; text-align: center">
+      <p>
+        Não tem uma conta?
+        <a
+          routerLink="/cadastro"
+          style="color: #3f51b5; text-decoration: none; font-weight: bold; cursor: pointer"
+        >
+          Cadastre-se aqui
+        </a>
+      </p>
+    </mat-card-footer>
   </mat-card>
 </div>
