@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Franklin",
+      "email": "franklin@email.com",
+      "password": "123"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "10",
+      "userId": 1,
+      "city": "São Paulo",
+      "position": "ARMADOR",
+      "level": "INTERMEDIARIO",
+      "availability": "NOITE"
+    }
+  ],
+  "login": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.fake-token-123456"
+  }
+}

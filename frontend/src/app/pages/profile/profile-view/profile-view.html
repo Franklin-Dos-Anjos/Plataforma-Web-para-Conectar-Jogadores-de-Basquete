@@ -1,1 +1,32 @@
-<p>profile-view works!</p>
+<div class="profile-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Meu Perfil de Jogador 🏀</mat-card-title>
+      <mat-card-subtitle>Detalhes do Jogador</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="content-view">
+      <div *ngIf="isLoading" class="loading-state">
+        <p>Carregando perfil...</p>
+      </div>
+
+      <div *ngIf="!isLoading && profile">
+        <p><strong>Cidade:</strong> {{ profile.city }}</p>
+        <p><strong>Posição:</strong> {{ profile.position }}</p>
+        <p><strong>Nível:</strong> {{ profile.level }}</p>
+        <p><strong>Disponibilidade:</strong> {{ profile.availability }}</p>
+      </div>
+
+      <div *ngIf="!isLoading && !profile" class="empty-state">
+        <p>Você ainda não completou seu perfil esportivo.</p>
+        <p>Clique em Criar Perfil para começar!</p>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-flat-button color="primary" routerLink="/perfil/editar">
+        {{ profile ? 'Editar Perfil' : 'Criar Perfil' }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
