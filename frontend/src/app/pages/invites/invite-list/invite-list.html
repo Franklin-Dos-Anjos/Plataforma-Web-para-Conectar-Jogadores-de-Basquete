@@ -1,1 +1,38 @@
-<p>invite-list works!</p>
+<div class="invites-container">
+  <h2>Convites Recebidos 📩</h2>
+
+  <div class="invites-list">
+    <mat-card *ngFor="let invite of invites" class="invite-card">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar-letter">
+          {{ invite.senderName?.charAt(0) }}
+        </div>
+        <mat-card-title>{{ invite.senderName }}</mat-card-title>
+        <mat-card-subtitle>Te convidou para jogar</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>Status atual:</p>
+
+        <span class="status-badge" [class.accepted]="invite.status === 'ACEITO'">
+          {{ invite.status }}
+        </span>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button
+          *ngIf="invite.status === 'PENDENTE'"
+          mat-flat-button
+          color="primary"
+          (click)="aceitar(invite)"
+        >
+          ACEITAR CONVITE
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <div *ngIf="invites.length === 0" class="empty-state">
+      <p>Nenhum convite pendente no momento.</p>
+    </div>
+  </div>
+</div>

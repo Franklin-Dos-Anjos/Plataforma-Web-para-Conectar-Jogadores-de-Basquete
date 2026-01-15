@@ -11,10 +11,47 @@
     {
       "id": "10",
       "userId": 1,
-      "city": "São Paulo",
+      "city": "Santos",
       "position": "ARMADOR",
       "level": "INTERMEDIARIO",
-      "availability": "NOITE"
+      "availability": "NOITE",
+      "name": "Franklin"
+    },
+    {
+      "id": "11",
+      "userId": 2,
+      "city": "Santos",
+      "position": "PIVO",
+      "level": "AVANCADO",
+      "availability": "MANHA",
+      "name": "LeBron James"
+    },
+    {
+      "id": "12",
+      "userId": 3,
+      "city": "São Paulo",
+      "position": "ALA",
+      "level": "INICIANTE",
+      "availability": "TARDE",
+      "name": "Oscar Schmidt"
+    }
+  ],
+  "invites": [
+    {
+      "id": "100",
+      "senderId": 2,
+      "senderName": "LeBron James",
+      "receiverId": 1,
+      "status": "ACEITO",
+      "createdAt": "2026-01-15T10:00:00"
+    },
+    {
+      "id": "c1da",
+      "senderId": 1,
+      "senderName": "Franklin",
+      "receiverId": 2,
+      "status": "PENDENTE",
+      "createdAt": "2026-01-15T21:18:14.071Z"
     }
   ],
   "login": {
