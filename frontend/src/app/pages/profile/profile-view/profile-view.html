@@ -11,6 +11,7 @@
       </div>
 
       <div *ngIf="!isLoading && profile">
+        <p><strong>Nome:</strong> {{ profile.name }}</p>
         <p><strong>Cidade:</strong> {{ profile.city }}</p>
         <p><strong>Posição:</strong> {{ profile.position }}</p>
         <p><strong>Nível:</strong> {{ profile.level }}</p>
