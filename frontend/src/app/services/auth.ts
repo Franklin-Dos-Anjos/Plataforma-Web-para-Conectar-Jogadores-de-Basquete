@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap, map } from 'rxjs';
 
@@ -9,7 +10,7 @@ export class AuthService {
   // Por enquanto aponta para o json-server. Depois mudarei para o Spring (ex: 8080/auth)
   private apiUrl = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   login(credentials: any): Observable<any> {
     // TRUQUE DO MOCK:
@@ -34,7 +35,7 @@ export class AuthService {
       }),
       tap((response: any) => {
         // Se chegou aqui, é porque deu sucesso
-        if (response.token) {
+        if (isPlatformBrowser(this.platformId)) {
           localStorage.setItem('auth_token', response.token);
         }
       })
@@ -47,11 +48,16 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('auth_token');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('auth_token');
+    }
   }
 
   isLoggedIn(): boolean {
     // Verifica se tem token salvo (lógica simples para o MVP)
-    return !!localStorage.getItem('auth_token');
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem('auth_token');
+    }
+    return false;
   }
 }

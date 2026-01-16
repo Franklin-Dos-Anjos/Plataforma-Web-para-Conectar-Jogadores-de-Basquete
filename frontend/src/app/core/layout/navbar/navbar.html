@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="navbar">
+  <span routerLink="/" style="cursor: pointer; font-weight: bold">
+    <mat-icon style="vertical-align: middle; margin-right: 5px">sports_basketball</mat-icon>
+    CourtConnect
+  </span>
+
+  <span class="spacer"></span>
+
+  @if (authService.isLoggedIn()) {
+  <button mat-button routerLink="/jogadores" routerLinkActive="active-link">Jogadores</button>
+  <button mat-button routerLink="/convites" routerLinkActive="active-link">Convites</button>
+  <button mat-button routerLink="/perfil" routerLinkActive="active-link">
+    <mat-icon>person</mat-icon> Meu Perfil
+  </button>
+
+  <button mat-icon-button (click)="logout()" title="Sair">
+    <mat-icon>logout</mat-icon>
+  </button>
+
+  } @else {
+  <button mat-button routerLink="/login">Entrar</button>
+  <button mat-stroked-button class="btn-white" routerLink="cadastro">Criar Conta</button>
+  }
+</mat-toolbar>
